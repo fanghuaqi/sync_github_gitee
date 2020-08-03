@@ -1,0 +1,55 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Sync Github and Gitee
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # Mirror github riscv-mcu to gitee riscv-mcu
+  mirror_riscv-mcu:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+
+    # Runs a single command using the runners shell
+    - name: Mirror riscv-mcu
+      uses: Yikun/hub-mirror-action@master
+      with:
+        src: github/riscv-mcu
+        dst: gitee/riscv-mcu
+        dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+        dst_token: ${{ secrets.GITEE_TOKEN }}
+        account_type: org
+        clone_style: "ssh"
+        cache_path: /github/workspace/hub-mirror-cache
+
+  # Mirror github riscv-mcu to gitee riscv-mcu
+  mirror_nuclei-software:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+
+    # Runs a single command using the runners shell
+    - name: Mirror Nuclei-Software
+      uses: Yikun/hub-mirror-action@master
+      with:
+        src: github/Nuclei-Software
+        dst: gitee/Nuclei-Software
+        dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+        dst_token: ${{ secrets.GITEE_TOKEN }}
+        account_type: org
+        clone_style: "ssh"
+        cache_path: /github/workspace/hub-mirror-cache
