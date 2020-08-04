@@ -6,8 +6,8 @@ name: Sync Github and Gitee
 # events but only for the master branch
 on:
   schedule:
-    # Run at 1:30 AM and 12:30 AM everyday
-    - cron: '30 0,12 * * *'
+    # Run at every 6 hours, 30min offset everyday
+    - cron: '30 0,6,12,18 * * *'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
