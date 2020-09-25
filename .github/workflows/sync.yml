@@ -60,48 +60,4 @@ jobs:
         black_list: "linux"
         cache_path: /github/workspace/hub-mirror-cache
 
-  # Mirror github chipsalliance to gitee chipsalliance
-  mirror_chipsalliance:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-
-    # Runs a single command using the runners shell
-    - name: Mirror chipsalliance
-      uses: Yikun/hub-mirror-action@master
-      with:
-        src: github/chipsalliance
-        dst: gitee/chipsalliance
-        dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
-        dst_token: ${{ secrets.GITEE_TOKEN }}
-        force_update: true
-        account_type: org
-        clone_style: "ssh"
-        cache_path: /github/workspace/hub-mirror-cache
-
-  # Mirror github verilator to gitee verilator
-  mirror_verilator:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-
-    # Runs a single command using the runners shell
-    - name: Mirror verilator
-      uses: Yikun/hub-mirror-action@master
-      with:
-        src: github/verilator
-        dst: gitee/verilator
-        dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
-        dst_token: ${{ secrets.GITEE_TOKEN }}
-        force_update: true
-        account_type: org
-        clone_style: "ssh"
-        cache_path: /github/workspace/hub-mirror-cache
