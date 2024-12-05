@@ -34,6 +34,7 @@ jobs:
         account_type: org
         force_update: true
         clone_style: "ssh"
+        black_list: "llvm-project"
         cache_path: /github/workspace/hub-mirror-cache
 
   # Mirror github nuclei-software to gitee nuclei-software
